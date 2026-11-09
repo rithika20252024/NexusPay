@@ -1,4 +1,4 @@
-# 🏦 NexusPay Enterprise — Banking Payment Gateway, Double-Entry Ledger & MRM AI Risk Platform
+#  NexusPay Enterprise — Banking Payment Gateway, Double-Entry Ledger & MRM AI Risk Platform
 
 [![Java 17](https://img.shields.io/badge/Java-17%20LTS-orange.svg)](https://www.oracle.com/java/)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2.0-brightgreen.svg)](https://spring.io/projects/spring-boot)
@@ -30,18 +30,18 @@ Engineered directly to align with enterprise banking standards (such as **Wells 
 1. **☕ Java 17 & Spring Boot 3 Microservices**:
    - Clean domain-driven architecture: JPA Entities (`Account`, `LedgerEntry`, `PaymentIntent`, `IdempotencyRecord`).
    - JPA `@Version` optimistic locking preventing concurrent lost updates during multi-threaded account transfers.
-2. **🧠 AI-Enabled Engineering & Model Risk Management (MRM)**:
+2. **AI-Enabled Engineering & Model Risk Management (MRM)**:
    - Conforms to **Federal Reserve / OCC SR 11-7** supervisory guidance on model risk governance.
    - Real-time transaction risk scoring with Explainable AI (XAI) feature attribution and automated PII data masking (`acc_cust****_pri`).
-3. **📊 Strict Double-Entry Bookkeeping Ledger**:
+3. **Strict Double-Entry Bookkeeping Ledger**:
    - Mathematical invariant enforcement ($\sum \text{Debits} \equiv \sum \text{Credits}$), integer cent arithmetic to eliminate floating-point precision errors, and tamper-evident SHA-256 block hash audit chains.
-4. **🛡️ IETF-Compliant Distributed Idempotency**:
+4. **IETF-Compliant Distributed Idempotency**:
    - SHA-256 payload fingerprinting and database mutex locking (`PROCESSING` $\rightarrow$ `RESOLVED`), eliminating duplicate double-charges during network retry storms.
-5. **📈 Enterprise Platform Operations & Observability**:
+5. **Enterprise Platform Operations & Observability**:
    - Spring Boot Actuator health probes (`/actuator/health/readiness`, `/actuator/health/liveness`).
    - Micrometer Prometheus metrics monitoring JVM heap memory, active worker threads, and p99 latency SLAs.
    - Red Hat OpenShift / Kubernetes deployment manifest (`deployment/openshift-deployment.yaml`) with non-root container security.
-6. **💻 Full-Stack React 19 Banking Portal**:
+6. **Full-Stack React 19 Banking Portal**:
    - Live payment console, MRM AI risk inspector, microsecond latency waterfall, and ledger statement explorer.
 
 ---
