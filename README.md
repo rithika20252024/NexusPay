@@ -14,19 +14,19 @@ Built specifically to demonstrate **end-to-end product ownership, deep payment s
 
 ---
 
-## 📸 Key Features & Capabilities
+## Key Features & Capabilities
 
-1. **💳 Stripe Payment Gateway Integration**: Complete payment checkout lifecycle (`requires_payment_method` $\rightarrow$ `processing` $\rightarrow$ `succeeded` / `failed`), handling test card scenarios (approved, insufficient funds decline, radar fraud block).
-2. **🛡️ IETF-Compliant Idempotency Engine**: SHA-256 request fingerprinting and atomic mutex locking (`PROCESSING` $\rightarrow$ `RESOLVED`). Zero double-charges during rapid client double-clicking or network retry storms.
-3. **📊 High-Throughput Double-Entry Ledger**: Mathematical invariant enforcement ($\sum \text{Debits} \equiv \sum \text{Credits}$), integer cent arithmetic to eliminate floating-point precision loss, running balance audit trail, and blockchain-style chained SHA-256 block hashes.
-4. **🔥 4,300+ RPS Concurrency Benchmark Engine**: Integrated load generator firing thousands of concurrent transactions across multi-worker pools with empirical tail latency tracking (p50, p90, p95, p99, p99.9).
-5. **🗄️ Zero-Downtime Database Schema Evolution**: Executable 3-stage migration pipeline (`v1` baseline $\rightarrow$ `v2` composite indexing that cuts query latency from 42ms to 2.1ms $\rightarrow$ `v3` non-blocking multi-currency & chained audit log).
+1. **Stripe Payment Gateway Integration**: Complete payment checkout lifecycle (`requires_payment_method` $\rightarrow$ `processing` $\rightarrow$ `succeeded` / `failed`), handling test card scenarios (approved, insufficient funds decline, radar fraud block).
+2. **IETF-Compliant Idempotency Engine**: SHA-256 request fingerprinting and atomic mutex locking (`PROCESSING` $\rightarrow$ `RESOLVED`). Zero double-charges during rapid client double-clicking or network retry storms.
+3. **High-Throughput Double-Entry Ledger**: Mathematical invariant enforcement ($\sum \text{Debits} \equiv \sum \text{Credits}$), integer cent arithmetic to eliminate floating-point precision loss, running balance audit trail, and blockchain-style chained SHA-256 block hashes.
+4. **4,300+ RPS Concurrency Benchmark Engine**: Integrated load generator firing thousands of concurrent transactions across multi-worker pools with empirical tail latency tracking (p50, p90, p95, p99, p99.9).
+5. **Zero-Downtime Database Schema Evolution**: Executable 3-stage migration pipeline (`v1` baseline $\rightarrow$ `v2` composite indexing that cuts query latency from 42ms to 2.1ms $\rightarrow$ `v3` non-blocking multi-currency & chained audit log).
 6. **⚡ Microsecond Latency Waterfall Profiler**: Real-time breakdown of critical path hops: DNS/Network $\rightarrow$ Idempotency lock $\rightarrow$ Ledger WAL commit $\rightarrow$ Stripe gateway roundtrip $\rightarrow$ Response delivery.
-7. **💼 Built-In Resume & Interview Kit**: Ready-to-copy quantified bullet points and technical interview cheat sheet directly accessible from the dashboard.
+7. **Built-In Resume & Interview Kit**: Ready-to-copy quantified bullet points and technical interview cheat sheet directly accessible from the dashboard.
 
 ---
 
-## 🚀 Quickstart Guide
+##  Quickstart Guide
 
 ### 1. Run the Full-Stack Application
 ```bash
