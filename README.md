@@ -1,16 +1,15 @@
-# ⚡ NexusPay — Production Fintech Payment Gateway & High-Throughput Double-Entry Ledger
+# 🏦 NexusPay Enterprise — Banking Payment Gateway, Double-Entry Ledger & MRM AI Risk Platform
 
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.7-blue.svg)](https://www.typescriptlang.org/)
-[![Node.js](https://img.shields.io/badge/Node.js-24+-green.svg)](https://nodejs.org/)
-[![React](https://img.shields.io/badge/React-18%2F19-61dafb.svg)](https://react.dev/)
-[![SQLite WAL](https://img.shields.io/badge/SQLite-WAL%20Mode-orange.svg)](https://www.sqlite.org/wal.html)
-[![Throughput](https://img.shields.io/badge/Throughput-4%2C380%2B%20RPS-brightgreen.svg)]()
-[![p99 Latency](https://img.shields.io/badge/p99%20Latency-%3C28ms-blueviolet.svg)]()
+[![Java 17](https://img.shields.io/badge/Java-17%20LTS-orange.svg)](https://www.oracle.com/java/)
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2.0-brightgreen.svg)](https://spring.io/projects/spring-boot)
+[![React](https://img.shields.io/badge/React-19-61dafb.svg)](https://react.dev/)
+[![OCC SR 11-7](https://img.shields.io/badge/Model%20Risk-OCC%20SR%2011--7%20Compliant-blueviolet.svg)]()
+[![OpenShift](https://img.shields.io/badge/Platform-Red%20Hat%20OpenShift-red.svg)](https://www.redhat.com/en/technologies/cloud-computing/openshift)
 [![Double Charge Rate](https://img.shields.io/badge/Double%20Charge%20Rate-0%25-success.svg)]()
 
-NexusPay is a production-grade fintech payment orchestration engine, high-concurrency double-entry accounting ledger, and real-time latency telemetry platform.
+NexusPay Enterprise is a production-grade banking payment microservice and double-entry accounting ledger built in **Java 17 LTS, Spring Boot 3.2, Spring Data JPA, and React 19**.
 
-Built specifically to demonstrate **end-to-end product ownership, deep payment systems design, high-RPS scaling benchmarks, database schema evolution, and quantifiable impact** expected in senior fintech engineering roles.
+Engineered directly to align with enterprise banking standards (such as **Wells Fargo, JPMorgan Chase, and Fidelity Investments**), featuring **Model Risk Management (MRM OCC SR 11-7)** AI fraud intelligence, strict double-entry balancing, IETF distributed idempotency, OpenShift container readiness, and comprehensive JUnit 5 QA test coverage.
 
 ---
 
@@ -28,59 +27,48 @@ Built specifically to demonstrate **end-to-end product ownership, deep payment s
 
 ##  Quickstart Guide
 
-### 1. Run the Full-Stack Application
-```bash
-# Starts the backend engine and serves the interactive React dashboard at http://localhost:5001
-node --experimental-strip-types backend/src/index.ts
-```
-Open **`http://localhost:5001`** in your browser.
+1. **☕ Java 17 & Spring Boot 3 Microservices**:
+   - Clean domain-driven architecture: JPA Entities (`Account`, `LedgerEntry`, `PaymentIntent`, `IdempotencyRecord`).
+   - JPA `@Version` optimistic locking preventing concurrent lost updates during multi-threaded account transfers.
+2. **🧠 AI-Enabled Engineering & Model Risk Management (MRM)**:
+   - Conforms to **Federal Reserve / OCC SR 11-7** supervisory guidance on model risk governance.
+   - Real-time transaction risk scoring with Explainable AI (XAI) feature attribution and automated PII data masking (`acc_cust****_pri`).
+3. **📊 Strict Double-Entry Bookkeeping Ledger**:
+   - Mathematical invariant enforcement ($\sum \text{Debits} \equiv \sum \text{Credits}$), integer cent arithmetic to eliminate floating-point precision errors, and tamper-evident SHA-256 block hash audit chains.
+4. **🛡️ IETF-Compliant Distributed Idempotency**:
+   - SHA-256 payload fingerprinting and database mutex locking (`PROCESSING` $\rightarrow$ `RESOLVED`), eliminating duplicate double-charges during network retry storms.
+5. **📈 Enterprise Platform Operations & Observability**:
+   - Spring Boot Actuator health probes (`/actuator/health/readiness`, `/actuator/health/liveness`).
+   - Micrometer Prometheus metrics monitoring JVM heap memory, active worker threads, and p99 latency SLAs.
+   - Red Hat OpenShift / Kubernetes deployment manifest (`deployment/openshift-deployment.yaml`) with non-root container security.
+6. **💻 Full-Stack React 19 Banking Portal**:
+   - Live payment console, MRM AI risk inspector, microsecond latency waterfall, and ledger statement explorer.
 
 ---
 
-### 2. Run the Automated Test Suite (14 Tests)
+## 🚀 Quickstart & Verification
+
+### 1. Run Enterprise Java 17 Backend
 ```bash
-node --test --experimental-strip-types \
-  backend/tests/ledger.test.ts \
-  backend/tests/idempotency.test.ts \
-  backend/tests/webhooks.test.ts \
-  backend/tests/migrations.test.ts
+cd backend-java
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home
+export PATH=$JAVA_HOME/bin:$PATH
+mvn spring-boot:run
 ```
+*API and Actuator will be available at [http://localhost:8080](http://localhost:8080)*
 
----
-
-### 3. Run the High-RPS Concurrency Benchmark (2,500 Transactions)
+### 2. Run Automated Enterprise JUnit 5 Test Suite
 ```bash
-node --experimental-strip-types backend/src/benchmarks/run-cli.ts
+cd backend-java
+mvn clean test
 ```
 
-**Benchmark Output Preview:**
+### 3. Run React 19 Frontend
+```bash
+cd frontend
+npm run dev
 ```
-===========================================================
-⚡ NexusPay High-Throughput Payment & Ledger Concurrency Benchmark
-===========================================================
-[Migration] Applying v1: 001_initial_ledger_schema
-[Migration] Applying v2: 002_performance_indexes_and_idempotency
-[Migration] Applying v3: 003_multi_currency_and_chained_audit
-[Database] Seeded initial financial accounts with $10,000.00 customer liquidity.
-
-[1/2] Warming up worker pool & prepared statement caches...
-[2/2] Firing high-concurrency load test: 2,500 transactions across 50 concurrent workers...
-
----------------- BENCHMARK TELEMETRY RESULTS ----------------
-Total Transactions : 2500
-Successful         : 2500
-Duplicates Blocked : 500 (Idempotency Key Collisions Safely Handled)
-Failed             : 0
-Execution Time     : 570.48 ms
-Throughput         : 🚀 4382.3 Transactions/Sec
-p50 Latency        : 11.92 ms
-p90 Latency        : 16.83 ms
-p95 Latency        : 22.45 ms
-p99 Latency        : 28.55 ms
-p99.9 Latency      : 31.65 ms
-System Invariant   : ✅ ZERO LEAKAGE (Total Funds Invariant Preserved)
-------------------------------------------------------------
-```
+*Open [http://localhost:5173](http://localhost:5173) in your browser.*
 
 ---
 
@@ -88,49 +76,35 @@ System Invariant   : ✅ ZERO LEAKAGE (Total Funds Invariant Preserved)
 
 ```
 nexuspay/
-├── README.md                      # Comprehensive project guide & benchmarks
-├── RESUME_CHEATSHEET.md           # Quantified resume bullet points & interview answers
-├── SYSTEM_DESIGN.md               # Architecture diagrams, invariants, & zero-downtime DDL
-├── package.json                   # Root scripts
-├── backend/
-│   ├── package.json
-│   ├── src/
-│   │   ├── index.ts               # HTTP Gateway, CORS, and SPA static server
-│   │   ├── types.ts               # Shared domain interfaces
-│   │   ├── staticServer.ts        # Built-in high-performance asset server
-│   │   ├── database/
-│   │   │   ├── DatabaseManager.ts # SQLite WAL configuration, transactions, seeding
-│   │   │   └── MigrationRunner.ts # 3-stage zero-downtime schema evolution
-│   │   ├── ledger/
-│   │   │   └── DoubleEntryLedger.ts # Debits == Credits invariant & SHA-256 audit chaining
-│   │   ├── middleware/
-│   │   │   └── IdempotencyManager.ts # IETF Idempotency-Key deduplication & replay
-│   │   ├── services/
-│   │   │   └── StripePaymentService.ts # Stripe PaymentIntent lifecycle & HMAC webhooks
-│   │   └── benchmarks/
-│   │       ├── StressTestRunner.ts # Multi-worker load test generator
-│   │       └── run-cli.ts          # CLI runner for high-concurrency benchmarks
-│   └── tests/
-│       ├── ledger.test.ts          # Accounting balance invariants & overdraft checks
-│       ├── idempotency.test.ts     # 30-worker race condition collision test
-│       ├── webhooks.test.ts        # HMAC signature validation & event outbox
-│       └── migrations.test.ts      # Multi-version database schema migrations
-└── frontend/
-    ├── package.json
-    ├── vite.config.ts
-    ├── index.html
-    └── src/
-        ├── main.tsx
-        ├── App.tsx
-        ├── types.ts
-        └── components/
-            ├── Header.tsx              # System navigation & WAL engine status
-            ├── CheckoutSimulator.tsx   # Stripe checkout, test cards, double-click test
-            ├── LatencyTelemetry.tsx     # Microsecond waterfall breakdown & SLAs
-            ├── StressTestStudio.tsx     # High-RPS concurrency testing studio
-            ├── LedgerExplorer.tsx       # Real-time chart of accounts & audit trail
-            ├── SchemaEvolutionViewer.tsx# Visual migration timeline (v1 -> v2 -> v3)
-            └── ResumeKitModal.tsx       # Quantified resume bullets & interview kit
+├── README.md                              # Enterprise architecture guide & quickstart
+├── RESUME_CHEATSHEET_WELLSFARGO.md        # Tailored Wells Fargo SWE Intern resume bullets
+├── RESUME_CHEATSHEET.md                   # General fintech resume bullets & interview Q&A
+├── SYSTEM_DESIGN.md                       # Architecture diagrams & concurrency design
+├── Dockerfile                             # Multi-stage production container build (OpenShift compliant)
+├── deployment/
+│   └── openshift-deployment.yaml          # OpenShift DeploymentConfig with health probes
+├── .github/workflows/
+│   └── maven-ci.yml                       # Automated GitHub Actions CI/CD pipeline
+├── backend-java/                          # Enterprise Java 17 + Spring Boot 3 Core
+│   ├── pom.xml
+│   ├── src/main/java/com/wellsfargo/nexuspay/
+│   │   ├── NexusPayApplication.java       # Main entrypoint & initial liquidity seeder
+│   │   ├── domain/                        # JPA Entities (Account, LedgerEntry, PaymentIntent)
+│   │   ├── repository/                    # Spring Data JPA Repositories
+│   │   ├── service/                       # DoubleEntryLedger, Idempotency, MRM Risk Engine
+│   │   ├── controller/                    # REST Controllers & Actuator Telemetry
+│   │   └── dto/                           # Request/Response Data Transfer Objects
+│   └── src/test/java/com/wellsfargo/nexuspay/
+│       ├── DoubleEntryLedgerTest.java     # Ledger balance invariant & overdraft tests
+│       ├── IdempotencyConcurrencyTest.java# Multi-threaded race condition tests
+│       └── ModelRiskManagementTest.java   # OCC SR 11-7 fraud scoring & XAI tests
+└── frontend/                              # Modern React 19 + TypeScript + Tailwind UI
+    ├── src/components/
+    │   ├── CheckoutSimulator.tsx          # Payment console & double-click retry test
+    │   ├── ModelRiskIntelligence.tsx      # MRM AI Risk Inspector & OCC SR 11-7 Governance
+    │   ├── EnterpriseObservability.tsx    # Spring Boot Actuator & OpenShift Telemetry
+    │   ├── LedgerExplorer.tsx             # Real-time ledger statements & audit chain
+    │   └── LatencyTelemetry.tsx           # Microsecond latency waterfall breakdown
 ```
 
 ---

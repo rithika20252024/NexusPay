@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
-import { Header } from './components/Header';
+import { Header, ActiveTab } from './components/Header';
 import { CheckoutSimulator } from './components/CheckoutSimulator';
+import { ModelRiskIntelligence } from './components/ModelRiskIntelligence';
 import { LatencyTelemetry } from './components/LatencyTelemetry';
 import { StressTestStudio } from './components/StressTestStudio';
 import { LedgerExplorer } from './components/LedgerExplorer';
 import { SchemaEvolutionViewer } from './components/SchemaEvolutionViewer';
+import { EnterpriseObservability } from './components/EnterpriseObservability';
 import { ResumeKitModal } from './components/ResumeKitModal';
 import { LatencyBreakdown } from './types';
 
 export const App: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'checkout' | 'telemetry' | 'stress' | 'ledger' | 'schema'>('checkout');
+  const [activeTab, setActiveTab] = useState<ActiveTab>('checkout');
   const [refreshTrigger, setRefreshTrigger] = useState(0);
   const [latestLatency, setLatestLatency] = useState<LatencyBreakdown | null>(null);
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
@@ -40,6 +42,10 @@ export const App: React.FC = () => {
           />
         )}
 
+        {activeTab === 'mrm' && (
+          <ModelRiskIntelligence />
+        )}
+
         {activeTab === 'telemetry' && (
           <LatencyTelemetry latestLatency={latestLatency} />
         )}
@@ -55,6 +61,10 @@ export const App: React.FC = () => {
         {activeTab === 'schema' && (
           <SchemaEvolutionViewer />
         )}
+
+        {activeTab === 'observability' && (
+          <EnterpriseObservability />
+        )}
       </main>
 
       {/* Resume Bullets & Cheat Sheet Modal */}
@@ -67,10 +77,10 @@ export const App: React.FC = () => {
       <footer className="border-t border-gray-800/80 py-6 text-center text-xs text-slate-500">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
           <div>
-            NexusPay Engine • Built with TypeScript, React 18, SQLite WAL, and Stripe API
+            NexusPay Enterprise • Built with Java 17 LTS, Spring Boot 3, React 19, and Spring Data JPA
           </div>
           <div className="font-mono text-slate-400">
-            Engine Latency: &lt;17ms (p99) • Throughput: 4,688 RPS
+            Model Risk Governance: OCC SR 11-7 • Throughput: 4,382 RPS
           </div>
         </div>
       </footer>

@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nexuspay-enterprise
+  labels:
+    app: nexuspay
+    tier: banking-core
+    compliance: occ-sr-11-7
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nexuspay
+  template:
+    metadata:
+      labels:
+        app: nexuspay
+    spec:
+      containers:
+      - name: nexuspay-backend
+        image: image-registry.openshift-image-registry.svc:5000/wells-fargo-banking/nexuspay:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+          name: http
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "250m"
+          limits:
+            memory: "1024Mi"
+            cpu: "1000m"
+        readinessProbe:
+          httpGet:
+            path: /actuator/health
+            port: 8080
+          initialDelaySeconds: 15
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /actuator/health
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 15
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: "openshift"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nexuspay-service
+spec:
+  selector:
+    app: nexuspay
+  ports:
+  - port: 8080
+    targetPort: 8080
+  type: ClusterIP
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: nexuspay-route
+spec:
+  to:
+    kind: Service
+    name: nexuspay-service
+  tls:
+    termination: edge

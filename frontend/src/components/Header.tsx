@@ -1,9 +1,11 @@
 import React from 'react';
-import { ShieldCheck, Cpu, Zap, Database, FileText } from 'lucide-react';
+import { Zap, FileText } from 'lucide-react';
+
+export type ActiveTab = 'checkout' | 'mrm' | 'telemetry' | 'stress' | 'ledger' | 'schema' | 'observability';
 
 interface HeaderProps {
-  activeTab: 'checkout' | 'telemetry' | 'stress' | 'ledger' | 'schema';
-  setActiveTab: (tab: 'checkout' | 'telemetry' | 'stress' | 'ledger' | 'schema') => void;
+  activeTab: ActiveTab;
+  setActiveTab: (tab: ActiveTab) => void;
   onOpenResumeModal: () => void;
 }
 
@@ -22,10 +24,10 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab, onOpenR
                 <span className="text-xl font-bold tracking-tight text-white">Nexus<span className="text-indigo-400">Pay</span></span>
                 <span className="text-xs px-2 py-0.5 rounded-full font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 flex items-center gap-1">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                  WAL Engine 4.6k RPS
+                  Spring Boot 3 + React 19
                 </span>
               </div>
-              <p className="text-xs text-slate-400">Production Payment Gateway & High-Throughput Double-Entry Ledger</p>
+              <p className="text-xs text-slate-400">Enterprise Double-Entry Ledger &amp; MRM AI Risk Platform</p>
             </div>
           </div>
 
@@ -33,17 +35,27 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab, onOpenR
           <nav className="flex space-x-1">
             <button
               onClick={() => setActiveTab('checkout')}
-              className={`px-3.5 py-1.5 rounded-lg text-sm font-medium transition-all ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
                 activeTab === 'checkout'
                   ? 'bg-indigo-600 text-white shadow-sm'
                   : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
               }`}
             >
-              💳 Payment Checkout
+              💳 Payment Console
+            </button>
+            <button
+              onClick={() => setActiveTab('mrm')}
+              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+                activeTab === 'mrm'
+                  ? 'bg-purple-600 text-white shadow-sm'
+                  : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
+              }`}
+            >
+              🧠 MRM AI Risk
             </button>
             <button
               onClick={() => setActiveTab('telemetry')}
-              className={`px-3.5 py-1.5 rounded-lg text-sm font-medium transition-all ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
                 activeTab === 'telemetry'
                   ? 'bg-indigo-600 text-white shadow-sm'
                   : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
@@ -53,17 +65,17 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab, onOpenR
             </button>
             <button
               onClick={() => setActiveTab('stress')}
-              className={`px-3.5 py-1.5 rounded-lg text-sm font-medium transition-all ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
                 activeTab === 'stress'
                   ? 'bg-indigo-600 text-white shadow-sm'
                   : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
               }`}
             >
-              🔥 5k RPS Stress Test
+              🔥 4.3k RPS Load Test
             </button>
             <button
               onClick={() => setActiveTab('ledger')}
-              className={`px-3.5 py-1.5 rounded-lg text-sm font-medium transition-all ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
                 activeTab === 'ledger'
                   ? 'bg-indigo-600 text-white shadow-sm'
                   : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
@@ -72,14 +84,14 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab, onOpenR
               📊 Double-Entry Ledger
             </button>
             <button
-              onClick={() => setActiveTab('schema')}
-              className={`px-3.5 py-1.5 rounded-lg text-sm font-medium transition-all ${
-                activeTab === 'schema'
-                  ? 'bg-indigo-600 text-white shadow-sm'
+              onClick={() => setActiveTab('observability')}
+              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+                activeTab === 'observability'
+                  ? 'bg-emerald-600 text-white shadow-sm'
                   : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
               }`}
             >
-              🗄️ Schema Evolution
+              📈 Observability &amp; OpenShift
             </button>
           </nav>
 
@@ -90,7 +102,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab, onOpenR
               className="flex items-center space-x-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-gradient-to-r from-amber-500/20 to-orange-500/20 hover:from-amber-500/30 hover:to-orange-500/30 text-amber-300 border border-amber-500/30 transition-all shadow-sm"
             >
               <FileText className="w-3.5 h-3.5" />
-              <span>Resume Bullets & Interview Kit</span>
+              <span>Wells Fargo Interview Kit</span>
             </button>
           </div>
         </div>
