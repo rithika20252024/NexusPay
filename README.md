@@ -135,12 +135,3 @@ nexuspay/
 
 ---
 
-## 💼 Resume Bullet Points Summary
-
-```text
-• Architected NexusPay, an end-to-end payment orchestration and double-entry ledger platform in TypeScript (React 18 + Node.js), integrating Stripe PaymentIntents API and HMAC-SHA256 cryptographically verified webhook reconciliation.
-• Engineered an IETF-compliant distributed idempotency engine using SHA-256 payload hashing and atomic mutex locks, achieving a 0% double-charge rate during 50-worker concurrent retry collision tests.
-• Sustained 4,300+ RPS with p99 latency < 28ms under high-concurrency benchmarks by configuring SQLite in Write-Ahead Logging (WAL) mode, caching prepared statements, and utilizing asynchronous worker pooling.
-• Designed an immutable double-entry ledger enforcing ACID balance invariants (Sum of Debits == Sum of Credits) and chained SHA-256 block hashes, ensuring complete audit tamper-evidence across financial transfers.
-• Executed a 3-stage zero-downtime database schema migration pipeline, introducing composite indexing that slashed statement query latency by 95% (from 42.0ms down to 2.1ms) on 100k+ entries while supporting backward-compatible multi-currency expansion.
-```
