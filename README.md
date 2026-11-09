@@ -1,5 +1,11 @@
 #  NexusPay Enterprise — Banking Payment Gateway, Double-Entry Ledger & MRM AI Risk Platform
 
+## Free portfolio demo deployment
+
+`render.yaml` defines a Render free web service that builds the React dashboard and runs the Node/SQLite simulator on one public URL. In Render, create a Blueprint from this repository and select the `deploy/render-free` branch.
+
+This is a resettable portfolio demo, not a production payment service. Render's free service sleeps after 15 minutes without traffic and its filesystem is temporary; the SQLite ledger may reset after restarts, spin-downs, or redeploys. Use only the app's synthetic test data. Do not submit real payment data or connect live payment credentials.
+
 [![Java 17](https://img.shields.io/badge/Java-17%20LTS-orange.svg)](https://www.oracle.com/java/)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2.0-brightgreen.svg)](https://spring.io/projects/spring-boot)
 [![React](https://img.shields.io/badge/React-19-61dafb.svg)](https://react.dev/)
