@@ -1,0 +1,12 @@
+{
+  "name": "nexuspay",
+  "version": "1.0.0",
+  "description": "Enterprise Payment Gateway, High-Throughput Double-Entry Ledger & Latency Telemetry Platform",
+  "scripts": {
+    "start": "node --experimental-strip-types backend/src/index.ts",
+    "build": "cd frontend && node ./node_modules/vite/bin/vite.js build",
+    "test": "node --test --experimental-strip-types backend/tests/ledger.test.ts backend/tests/idempotency.test.ts backend/tests/webhooks.test.ts backend/tests/migrations.test.ts",
+    "benchmark": "node --experimental-strip-types backend/src/benchmarks/run-cli.ts",
+    "verify": "npm run test && npm run benchmark"
+  }
+}
