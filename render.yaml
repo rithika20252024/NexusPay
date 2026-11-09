@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: nexuspay-demo
+    runtime: node
+    plan: free
+    buildCommand: npm install --prefix frontend && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: 24
+      - key: HOST
+        value: 0.0.0.0
+      - key: NEXUSPAY_DB_PATH
+        value: /tmp/nexuspay.sqlite

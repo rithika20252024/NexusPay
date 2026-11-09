@@ -214,7 +214,8 @@ const server = http.createServer(async (req, res) => {
   }
 });
 
-server.listen(PORT, () => {
+const HOST = process.env.HOST || (process.env.RENDER ? '0.0.0.0' : '127.0.0.1');
+server.listen(PORT, HOST, () => {
   console.log(`[NexusPay Core Engine] Running on http://localhost:${PORT}`);
   console.log(`[Ready] Database WAL mode active. Ledger & Idempotency engines initialized.`);
 });
